@@ -1,0 +1,19 @@
+{
+  "name": "upscaled",
+  "version": "1.0.0",
+  "description": "This is a micro crowd-funding platform for allowing people to pool together their monies, in order to afford something that none of the individual members could have afforded on their own.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paaKways/upscaled.git"
+  },
+  "author": "HelloWorld",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paaKways/upscaled/issues"
+  },
+  "homepage": "https://github.com/paaKways/upscaled#readme"
+}
