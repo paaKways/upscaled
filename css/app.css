@@ -10,6 +10,7 @@
 
 .outlined{
   border: 2px solid #333;
+  border-radius: 1.5vw;
 }
 
 .section-main{
@@ -311,7 +312,7 @@
 
 .section-panel{
   display: inline-block;
-  height: 100vh;
+  height: 180vh;
 }
 
 .section-menu-left{
@@ -323,10 +324,24 @@
 .section-main-right{
   float: right;
   width: 80vw;
+  padding-top: 5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .span-logged-user-name{
   position: relative;
   top: 0.5vw;
   left: -0.5vw;
+}
+
+.img-div-section-main-user-icon{
+  width: 5vw;
+}
+
+.div-panel{
+  width: 100%;
+  margin-bottom: 4vw;
+  padding: 5vw;
 }
