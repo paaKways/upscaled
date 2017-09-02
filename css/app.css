@@ -22,6 +22,26 @@
   font-size: 2.3vw;
 }
 
+.a-no-decoration:hover{
+  text-decoration: none;
+  color: lightblue;
+}
+
+.a-no-decoration{
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -68,6 +88,17 @@
   top: 0.5vw;
 }
 
+.span-section-header-user-menu-register{
+  margin-right: 2vw;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -97,6 +128,7 @@
 }
 
 .div-section-middle-center-wrapper{
+  /*max-width: 640p*/
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -106,6 +138,7 @@
 
 .p-section-middle-company-description{
   width: 100%;
+  color: black;
 }
 
 .div-section-middle-company-description-wrapper{
@@ -139,4 +172,161 @@
   margin-right: 2vw;
   margin-bottom: 2vw;
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  Login Page
+*/
+
+.div-section-middle-login-form-wrapper{
+  width: 80vw;
+  height: 60vw;
+  border: 2px solid #333;
+  border-radius: 1vw;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-input-login-form-text{
+  font-size: 2vw;
+  margin-right: 1vw;
+  width: 22vw;
+}
+
+.div-reg-log-element-wrapper{
+  width: 65vw;
+  height: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.input-login-form-text{
+  width: 38vw;
+  border: 1px solid #aaa;
+  font-size: 2.4vw;
+}
+
+.div-reg-log-form-submit-btn-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vw;
+}
+
+.btn-reg-log-submit{
+  width: 30vw;
+  font-size: 2.6vw;
+  background-color: #ededed;
+  border: 0.3vw solid #333;
+  border-radius: 1vw;
+}
+
+.btn-reg-log-submit:hover{
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* logged in panels */
+
+/* side panel */
+
+.section-panel{
+  display: inline-block;
+  height: 100vh;
+}
+
+.section-menu-left{
+  float: left;
+  width: 20vw;
+  background-color: #ddd;
+}
+
+.section-main-right{
+  float: right;
+  width: 80vw;
+}
+
+.span-logged-user-name{
+  position: relative;
+  top: 0.5vw;
+  left: -0.5vw;
 }
