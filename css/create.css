@@ -8,7 +8,7 @@ General
 a{
   text-decoration: none;
 }
-input{
+input, select{
     width: 100%;
     padding: 4px;
     box-sizing: border-box;
@@ -16,7 +16,7 @@ input{
     resize: vertical;
 }
 .register-box {
-  width: 360px;
+  width: 390px;
   margin: 7% auto;
 }
 
@@ -27,6 +27,19 @@ input{
   color: #666;
 }
 
+.makebtn{
+  transition: .5s ease;
+  background-color: #0f5;
+  color: white;
+  font-size: 20px;
+}
+
+.cancelbtn{
+  transition: .5s ease;
+  background-color: #f44336;
+  color: white;
+  font-size: 20px;
+}
 /*************
 body
 **************/

@@ -12,16 +12,34 @@
         <script type="text/javascript" src="js/app.js"></script>
         <div align="center" class="container">
           <div class="register-box">
-            <h2 calss="content-header">CREATE GROUP</h2>
+            <h2 class="content-header" style="text-align:center"> WITHDRALWAL</h2>
           <div class="register-box-body">
-            <form>
-              <input type="text" id="gname" name="groupname" placeholder="Group name" required />
-              <input type="text" id="gnumber" name="groupnumber" placeholder="Group number" required />
-              <button type="submit" class="btn btn-primary btn-flat makebtn">Create</button>
+            <form  class="form-horizontal" role="form" action="form_processing.php" >
+              <table>
+                <tr>
+                  <td><label >Date of transaction:</label></td>
+                  <td><input type="datetime" class="form-control" name="date" value=""></td>
+                </tr>
+                <tr>
+                  <td><label >Amount: </label></td>
+                  <td><input type="number" class="form-control" name="date" placeholder="Please Enter Amount" value=""></td>
+                </tr>
+                <tr>
+                  <td><label >Phone No: </label></td>
+                  <td><input type="date" class="form-control" name="date" value=""></td>
+                </tr>
+                <tr>
+                  <td><label >Agent ID: </label></td>
+                  <td><input type="text" class="form-control" name="agent"  value=""></td>
+                </tr>
+                <tr>
+                  <td><button type="submit" class="makebtn">Make Transaction</button></td>
+                  <td><button type="button" class="cancelbtn">Cancel</button></td>
+                </tr>
+              </table>
             </form>
-            </div>
           </div>
-
+        </div>
         <!-- middle section -->
           <section class="section-middle section-main">
             <div class="div-section-middle-center-wrapper resize-me" percentage="80">
@@ -36,6 +54,6 @@
               </div>
             </div>
           </section>
-        </div>
-    </body>
+  </div>
+</body>
 </html>
