@@ -1,0 +1,73 @@
+/*************
+General
+**************/
+.content-header {
+  position: relative;
+  padding: 15px 15px 0 15px;
+}
+a{
+  text-decoration: none;
+}
+input{
+    width: 100%;
+    padding: 4px;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+    resize: vertical;
+}
+.register-box {
+  width: 360px;
+  margin: 7% auto;
+}
+
+.register-box-body {
+  background: #fff;
+  padding: 20px;
+  border-top: 0;
+  color: #666;
+}
+
+/*************
+body
+**************/
+body{
+  background: #333;
+}
+
+
+
+/* Middle Section
+*/
+
+.section-middle{
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-section-middle-logo{
+  width: 100%;
+  display: block;
+}
+
+.div-section-middle-logo-wrapper{
+  display: block;
+}
+
+.div-section-middle-center-wrapper{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-section-middle-company-description{
+  width: 100%;
+}
+
+.div-section-middle-company-description-wrapper{
+  display: block;
+}
