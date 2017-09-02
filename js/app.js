@@ -95,6 +95,9 @@ if ( typeof jQuery !== undefined ){
 
   // variables
   var strLocalStorageCode = "HelloWorld";
+  var strGroupName = "helloworld";
+  var systemController;
+  var systemModel;
   
   //Devless instance
   var db = DV({
@@ -104,11 +107,57 @@ if ( typeof jQuery !== undefined ){
 
   
 
+
+
+
+
+
+
+
+
+
+
   // classes
   class Model{
 
     constructor(){
+      this.initModel();
+    }
 
+    initModel(){
+      console.log("Model::initModel > line 126. | alpha");
+
+      var pojoAllData = getAllData();
+      pojoAllData["groups"] = pojoAllData["groups"] || this.makeNewGroup();
+      pojoAllData["groups"] = this.recalculateData(pojoAllData["groups"]);
+ 
+      console.log('alpha. pojoAllData: ', pojoAllData);
+
+      saveAllData(pojoAllData);
+    }
+
+    makeNewGroup(){
+
+      console.log("Model::makeNewGroup > line 134. | alpha");
+
+      var intMin = 5;
+      var intMax = 15;
+      var intBalance = _.random(intMin, intMax)  * 100;
+
+      var intMin = 20;
+      var intMax = 50;
+      var intCredit = _.random(intMin, intMax)  * 10;
+
+      var pojoData = {
+        id: 'helloworld',
+        name: '"Hello World" Collective',
+        balance: intBalance,
+        creditScore: intCredit,
+        amountDeposited: 0,
+        users: [],
+      }
+
+      return {'helloworld': pojoData};
     }
 
     getCurrentUserName(){
@@ -145,6 +194,9 @@ if ( typeof jQuery !== undefined ){
       // set current user
       pojoData["users"][strId] = pojoFields;
 
+      // add user to group
+      pojoData["groups"][strGroupName].users.push(strId);
+
       // save data
       saveAllData(pojoData);
 
@@ -178,6 +230,16 @@ if ( typeof jQuery !== undefined ){
       saveAllData(pojoData);
     }
 
+    getGroup(){
+      var pojoData = getAllData();
+      var pojoGroup = pojoData["groups"][strGroupName];
+
+      // recalculate data
+      pojoGroup = this.recalculateData(pojoGroup);
+
+      return pojoGroup;
+    }
+
     getCurrentUser(){
 
       console.log("Model::getCurrentUser > line 174. | alpha");
@@ -208,8 +270,10 @@ if ( typeof jQuery !== undefined ){
       pojoCurrentUser["creditLimit"] = intCreditLimit;
       pojoCurrentUser["totalAvailable"] = intCreditLimit + intDeposited;
 
+
       return pojoCurrentUser;
     }
+
 
   }
 
@@ -243,7 +307,13 @@ if ( typeof jQuery !== undefined ){
     }
 
     isLoggedIn(){
-      return false;
+      var pojoData = getAllData();
+
+      var boolIsLoggedIn = !!pojoData["currentUser"];
+
+      console.log("Controller::isLoggedIn > line 312. | boolIsLoggedIn: ", boolIsLoggedIn);
+
+      return boolIsLoggedIn;
     }
 
     logOut(){
@@ -276,7 +346,7 @@ if ( typeof jQuery !== undefined ){
       }
     }
 
-    // workin
+  
     loginUser(strId){
       var strNewPage = "logged-in-home"
       this.setCurrentPage(strNewPage);
@@ -581,14 +651,16 @@ if ( typeof jQuery !== undefined ){
       $('.btn-register-btn').click(this.registerUser.bind(that));
     }
 
-    // workin
+    // workinonit
     handleChangeToLoggedInPage(){
       var that = this;
 
       // set data
       var pojoUser = this.model.getCurrentUser();
+      var pojoGroup = this.model.getGroup();
 
       console.log("Controller::handleChangeToLoggedInPage > line 569. | pojoUser: ", pojoUser);
+      console.log("Controller::handleChangeToLoggedInPage > line 569. | pojoGroup: ", pojoGroup);
 
       var strUserName = this.model.getCurrentUserName();
       var strEmail = pojoUser["email"];
@@ -602,7 +674,7 @@ if ( typeof jQuery !== undefined ){
       $('.span-logged-user-name').html(strUserName);
       $('.span-main-panel-user-name').html(strUserName);
 
-      // put in the numbers
+      // put in the numbers - user
       
       $('.span-email-field').html(strEmail);
       $('.span-deposited-field').html(strDeposited);
@@ -610,6 +682,20 @@ if ( typeof jQuery !== undefined ){
       $('.span-credit-score-field').html(strCreditScore)
       $('.span-total-available-field').html(strTotalAvailable);
       $('.span-payment-method-balance').html(strBalance);
+
+      // put in the numbers - group
+
+
+      var strDeposited = pojoGroup["amountDeposited"] + " GHS";
+      var strCreditScore = pojoGroup["creditScore"];
+      var strCreditLine = pojoGroup["creditLimit"] + " GHS";
+      var strBalance = pojoGroup["balance"] + " GHS";
+      var strTotalAvailable = pojoGroup["totalAvailable"] + " GHS";
+      
+      $('.span-group-deposited-field').html(strDeposited);
+      $('.span-group-credit-line-field').html(strCreditLine);
+      $('.span-group-credit-score-field').html(strCreditScore)
+      $('.span-group-total-available-field').html(strTotalAvailable);
 
       // handling, eventually.
       // $('.btn-register-btn').off("click");
@@ -664,14 +750,21 @@ if ( typeof jQuery !== undefined ){
   }
 
   function init(){
-    var systemController = new Controller();
-    var systemModel = new Model();
+    systemController = new Controller();
+    systemModel = new Model();
 
 
     systemController.setModel(systemModel);    
     systemController.checkState();
-    systemController.setCurrentPage('home');
-    // systemController.setCurrentPage('logged-in-home');
+
+    if (systemController.isLoggedIn()){
+      // console.log('wtf')
+      systemController.setCurrentPage('logged-in-home');
+    }
+    else{
+      systemController.setCurrentPage('home');
+      // systemController.setCurrentPage('logged-in-home');
+    }
 
   }
 
