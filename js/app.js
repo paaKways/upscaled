@@ -366,14 +366,44 @@ if ( typeof jQuery !== undefined ){
       var strEmail = pojoFields["email"];
       var strId = strEmail;
 
+<<<<<<< HEAD
+
+
+      delete pojoFields["retypePassword"];
+
+      db.addData('People', 'peopledata', pojoFields , function(response) {
+        if (response.status_code === 609) {
+          console.log('addData :passed ');
+          alert(response.message);
+          $('.alert').html(response.message);
+        } else {
+          console.log('addData :failed ');
+          alert(response.message);
+          $('.alert').html(response.message);
+        }
+
+      });
+      /* get data
+      var pojoData = getAllData();
+      pojoData["users"] = pojoData["users"] || {};
+=======
       console.log('Controller::registerUser > line 279. | strId: ', strId);
+>>>>>>> 8a091cbccba077491adda2e8fe5b3a537f93de5e
 
       // save and set user
       this.model.saveUser(pojoFields);
       this.model.setCurrentUser(strId);
 
+<<<<<<< HEAD
+      // save data
+      saveAllData(pojoData);*/
+
+      // change to logged in page
+      window.location('logged-in-home.html');
+=======
       // change to logged in page.
       this.loginUser(strId);
+>>>>>>> 8a091cbccba077491adda2e8fe5b3a537f93de5e
     }
 
 
@@ -742,7 +772,20 @@ if ( typeof jQuery !== undefined ){
 
     var strPojoData = JSON.stringify(pojoData);
 
-    localStorage.setItem(strLocalStorageCode, strPojoData);
+    console.log(pojoData);
+
+    /*db.addData('People', 'peopledata', pojoData , function(response) {
+      if (response.status_code === 609) {
+        console.log('addData :passed ');
+        console.log(response);
+      } else {
+        console.log('addData :failed ');
+        console.log(response);
+      }
+
+    });*/
+
+    // localStorage.setItem(strLocalStorageCode, strPojoData);
   }
 
   function reset(){
