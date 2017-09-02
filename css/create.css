@@ -31,14 +31,13 @@ input, select{
   transition: .5s ease;
   background-color: #0f5;
   color: white;
-  font-size: 20px;
 }
 
 .cancelbtn{
   transition: .5s ease;
   background-color: #f44336;
   color: white;
-  font-size: 20px;
+
 }
 /*************
 body

@@ -560,7 +560,20 @@ if ( typeof jQuery !== undefined ){
 
     var strPojoData = JSON.stringify(pojoData);
 
-    localStorage.setItem(strLocalStorageCode, strPojoData);
+    console.log(pojoData);
+
+    db.addData('People', 'peopledata', pojoData , function(response) {
+      if (response.status_code === 609) {
+        console.log('addData :passed ');
+        console.log(response);
+      } else {
+        console.log('addData :failed ');
+        console.log(response);
+      }
+
+    });
+
+    // localStorage.setItem(strLocalStorageCode, strPojoData);
   }
 
   function reset(){
