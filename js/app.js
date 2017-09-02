@@ -104,16 +104,62 @@ if ( typeof jQuery !== undefined ){
 
     }
 
-    getUserName(){
+    getCurrentUserName(){
 
       var pojoCurrentUser = this.getCurrentUser();
       var strUserName = pojoCurrentUser["name"];
 
-      console.log("Model::getUserName > line 112. | strUserName: ", strUserName);
+      console.log("Model::getCurrentUserName > line 112. | strUserName: ", strUserName);
 
       return strUserName;
     }
 
+    saveUser(pojoFields){
+
+      console.log("Model::saveUser > line 119. | pojoFields: ", pojoFields);
+
+      // get data
+      var pojoData = getAllData();
+      var strId = pojoFields["email"];
+      pojoData["users"] = pojoData["users"] || {};
+
+
+      delete pojoFields["retypePassword"];
+
+      // add stuff to user
+      var pojoRandomData = this.getRandomUserData();
+      pojoFields["balance"] = pojoRandomData["balance"];
+      pojoFields["creditScore"] = pojoRandomData["creditScore"];
+      pojoFields["amountDeposited"] = pojoRandomData["amountDeposited"];
+
+      // calculate credit
+      pojoFields = this.recalculateData(pojoFields);
+
+      // set current user
+      pojoData["users"][strId] = pojoFields;
+
+      // save data
+      saveAllData(pojoData);
+
+    }
+
+    getRandomUserData(){
+      var intMin = 5;
+      var intMax = 15;
+      var intBalance = _.random(intMin, intMax)  * 100;
+
+      var intMin = 20;
+      var intMax = 50;
+      var intCredit = _.random(intMin, intMax)  * 10;
+
+      var pojoData = {
+        balance: intBalance,
+        creditScore: intCredit,
+        amountDeposited: 0,
+      }
+
+      return pojoData;
+    }
 
     setCurrentUser(strId){
 
@@ -121,14 +167,39 @@ if ( typeof jQuery !== undefined ){
 
       var pojoData = getAllData();
       pojoData["currentUser"] = strId;
+
+      saveAllData(pojoData);
     }
 
     getCurrentUser(){
+
+      console.log("Model::getCurrentUser > line 174. | alpha");
+
       var pojoData = getAllData();
       var strCurrUserId = pojoData["currentUser"];
+
+      console.log("Model::getCurrentUser > line 174. | strCurrUserId: ",strCurrUserId);
+
       var pojoCurrentUser = pojoData["users"][strCurrUserId];
 
-      console.log("Model::getCurrentUser > line 125. | pojoCurrentUser: ", pojoCurrentUser);
+      // recalculate data
+      pojoCurrentUser = this.recalculateData(pojoCurrentUser);
+
+      console.log("Model::getCurrentUser > line 180. | pojoCurrentUser: ", pojoCurrentUser);
+
+      return pojoCurrentUser;
+    }
+
+    recalculateData(pojoCurrentUser){
+
+      console.log("Model::recalculateData > line 187. | pojoCurrentUser: ", pojoCurrentUser);
+
+      var intCreditScore = pojoCurrentUser["creditScore"];
+      var intDeposited = pojoCurrentUser["amountDeposited"]
+
+      var intCreditLimit = Math.floor((intCreditScore/500) * intDeposited);
+      pojoCurrentUser["creditLimit"] = intCreditLimit;
+      pojoCurrentUser["totalAvailable"] = intCreditLimit + intDeposited;
 
       return pojoCurrentUser;
     }
@@ -206,6 +277,9 @@ if ( typeof jQuery !== undefined ){
 
 
     registerUser(){
+
+      console.log('Controller::registerUser > line 279.');
+
       // get fields
       var pojoFields = this.getFormFields();
 
@@ -215,20 +289,14 @@ if ( typeof jQuery !== undefined ){
       var strEmail = pojoFields["email"];
       var strId = strEmail;
 
-      // get data
-      var pojoData = getAllData();
-      pojoData["users"] = pojoData["users"] || {};
+      console.log('Controller::registerUser > line 279. | strId: ', strId);
 
-      delete pojoFields["retypePassword"];
-      pojoData["users"][strId] = pojoFields;
-
-      // set current user
+      // save and set user
+      this.model.saveUser(pojoFields);
       this.model.setCurrentUser(strId);
 
-      // save data
-      saveAllData(pojoData);
-
-      // change to logged in page
+      // change to logged in page.
+      this.loginUser(strId);
     }
 
 
@@ -422,8 +490,15 @@ if ( typeof jQuery !== undefined ){
         case "register":
           this.handleChangeToRegisterPage.call(that);
           break;
+        case "logged-in-home":
+          this.handleChangeToLoggedInPage.call(that);
+          break;
       }
     }
+
+
+
+
 
 
 
@@ -499,6 +574,41 @@ if ( typeof jQuery !== undefined ){
       $('.btn-register-btn').click(this.registerUser.bind(that));
     }
 
+    // workin
+    handleChangeToLoggedInPage(){
+      var that = this;
+
+      // set data
+      var pojoUser = this.model.getCurrentUser();
+
+      console.log("Controller::handleChangeToLoggedInPage > line 569. | pojoUser: ", pojoUser);
+
+      var strUserName = this.model.getCurrentUserName();
+      var strEmail = pojoUser["email"];
+      var strDeposited = pojoUser["amountDeposited"] + " GHS";
+      var strCreditScore = pojoUser["creditScore"];
+      var strCreditLine = pojoUser["creditLimit"] + " GHS";
+      var strBalance = pojoUser["balance"] + " GHS";
+      var strTotalAvailable = pojoUser["totalAvailable"] + " GHS";
+
+      // put user name here
+      $('.span-logged-user-name').html(strUserName);
+      $('.span-main-panel-user-name').html(strUserName);
+
+      // put in the numbers
+      
+      $('.span-email-field').html(strEmail);
+      $('.span-deposited-field').html(strDeposited);
+      $('.span-credit-line-field').html(strCreditLine);
+      $('.span-credit-score-field').html(strCreditScore)
+      $('.span-total-available-field').html(strTotalAvailable);
+      $('.span-payment-method-balance').html(strBalance);
+
+      // handling, eventually.
+      // $('.btn-register-btn').off("click");
+      // $('.btn-register-btn').click(this.registerUser.bind(that));
+    }
+
     handleChangeToHomePage(){
       console.log('handleChangeToHomePage > line 160. | alpha');
 
@@ -507,7 +617,7 @@ if ( typeof jQuery !== undefined ){
       }
       else{
 
-        var strUserName = this.model.getUserName();
+        var strUserName = this.model.getCurrentUserName();
         $('.span-section-header-user-menu-login-out').html(strUserName);
 
         $('.img-div-section-header-user-icon').show();
@@ -520,20 +630,6 @@ if ( typeof jQuery !== undefined ){
   // variables
 
   // functions
-
-  function init(){
-    var systemController = new Controller();
-    var systemModel = new Model();
-
-
-    systemController.setModel(systemModel);    
-    systemController.checkState();
-    systemController.setCurrentPage('home');
-
-
-
-
-  }
 
   function getAllData(){
     var strPojoData = localStorage.getItem(strLocalStorageCode) || "{}";
@@ -558,6 +654,18 @@ if ( typeof jQuery !== undefined ){
 
   function reset(){
     localStorage.setItem(strLocalStorageCode, "{}");
+  }
+
+  function init(){
+    var systemController = new Controller();
+    var systemModel = new Model();
+
+
+    systemController.setModel(systemModel);    
+    systemController.checkState();
+    systemController.setCurrentPage('home');
+    // systemController.setCurrentPage('logged-in-home');
+
   }
 
 

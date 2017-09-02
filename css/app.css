@@ -51,6 +51,7 @@
 
 
 
+
 /* Homepage
 */
 /* Header Section 
@@ -308,6 +309,19 @@
 
 /* logged in panels */
 
+
+.section-main-right h3{
+  margin-top: 3vw;
+  position: relative;
+  left: -4vw;
+}
+
+.section-main-right h2{
+  position: relative;
+  left: -4vw;
+  margin-bottom: 4vw;
+}
+
 /* side panel */
 
 .section-panel{
@@ -343,5 +357,14 @@
 .div-panel{
   width: 100%;
   margin-bottom: 4vw;
-  padding: 5vw;
+  padding: 5vw 5vw 5vw 9vw;
+  background-color: #fcfcff;
+}
+
+.span-label{
+  font-weight: 500;
+}
+
+.btn-edit-payment{
+  margin-left: 3vw;
 }
