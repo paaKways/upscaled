@@ -232,7 +232,8 @@
 }
 
 .label-input-login-form-text {
-  font-size: 2vw;
+
+  font-size: 1.2em;
   margin-right: 1vw;
   width: 24%;
 }
@@ -257,7 +258,7 @@
 .input-login-form-text {
   width: 60% !important;
   border: 1px solid #aaa;
-  font-size: 2.4vw;
+  font-size: 1.2em;
 }
 
 .div-reg-log-form-submit-btn-wrapper{

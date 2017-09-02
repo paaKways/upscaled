@@ -366,8 +366,6 @@ if ( typeof jQuery !== undefined ){
       var strEmail = pojoFields["email"];
       var strId = strEmail;
 
-<<<<<<< HEAD
-
 
       delete pojoFields["retypePassword"];
 
@@ -386,24 +384,16 @@ if ( typeof jQuery !== undefined ){
       /* get data
       var pojoData = getAllData();
       pojoData["users"] = pojoData["users"] || {};
-=======
-      console.log('Controller::registerUser > line 279. | strId: ', strId);
->>>>>>> 8a091cbccba077491adda2e8fe5b3a537f93de5e
 
       // save and set user
       this.model.saveUser(pojoFields);
       this.model.setCurrentUser(strId);
 
-<<<<<<< HEAD
       // save data
       saveAllData(pojoData);*/
 
       // change to logged in page
       window.location('logged-in-home.html');
-=======
-      // change to logged in page.
-      this.loginUser(strId);
->>>>>>> 8a091cbccba077491adda2e8fe5b3a537f93de5e
     }
 
 
