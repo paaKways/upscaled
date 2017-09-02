@@ -222,7 +222,23 @@ if ( typeof jQuery !== undefined ){
       var strEmail = pojoFields["email"];
       var strId = strEmail;
 
-      // get data
+
+
+      delete pojoFields["retypePassword"];
+
+      db.addData('People', 'peopledata', pojoFields , function(response) {
+        if (response.status_code === 609) {
+          console.log('addData :passed ');
+          alert(response.message);
+          $('.alert').html(response.message);
+        } else {
+          console.log('addData :failed ');
+          alert(response.message);
+          $('.alert').html(response.message);
+        }
+
+      });
+      /* get data
       var pojoData = getAllData();
       pojoData["users"] = pojoData["users"] || {};
 
@@ -233,9 +249,10 @@ if ( typeof jQuery !== undefined ){
       this.model.setCurrentUser(strId);
 
       // save data
-      saveAllData(pojoData);
+      saveAllData(pojoData);*/
 
       // change to logged in page
+      window.location('logged-in-home.html');
     }
 
 
@@ -562,7 +579,7 @@ if ( typeof jQuery !== undefined ){
 
     console.log(pojoData);
 
-    db.addData('People', 'peopledata', pojoData , function(response) {
+    /*db.addData('People', 'peopledata', pojoData , function(response) {
       if (response.status_code === 609) {
         console.log('addData :passed ');
         console.log(response);
@@ -571,7 +588,7 @@ if ( typeof jQuery !== undefined ){
         console.log(response);
       }
 
-    });
+    });*/
 
     // localStorage.setItem(strLocalStorageCode, strPojoData);
   }

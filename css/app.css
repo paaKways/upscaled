@@ -1,6 +1,9 @@
 /* General 
 */
 
+.alert-success { 
+  display: none;
+}
 
 .div-container{
   width: 100vw;
@@ -213,8 +216,9 @@
 */
 
 .div-section-middle-login-form-wrapper{
-  width: 80vw;
-  height: 60vw;
+  /*width: 80vw;
+  height: 60vw;*/
+  padding: 40px;
   border: 2px solid #333;
   border-radius: 1vw;
   background-color: #ddd;
