@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upscaled</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/create.css" type="text/css">
+</head>
+<body>
+  <div class="contain" align="center">
+    <div class="register-box">
+      <h2 class="content-header" style="text-align:center">TRANSFER MONEY</h2>
+      <div class="register-box-body">
+        <form  class="form-horizontal" role="form" action="form_processing.php" >
+          <table>
+            <tr>
+              <td><label >Date of transaction:</label></td>
+              <td><input type="datetime" class="form-control" name="date" value=""></td>
+            </tr>
+            <tr>
+              <td><label  >Transfer From: </label></td>
+              <td>Transfer To</td>
+            </tr>
+            <tr>
+              <td><select >
+                <option>User</option>
+                <option>Group</option>
+              </select></td>
+              <td><select >
+                <option>User</option>
+                <option>Group</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td><input type="text" id="trans_num" name="trans_num" placeholder="Group or User Number"/></td>
+              <td><input type="text" id="trans_num" name="trans_num" placeholder="Group or User Number"/></td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-primary btn-flat makebtn">Make Transaction</button></td>
+              <td><button type="button" class="cancelbtn">Cancel</button></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  <!-- middle section -->
+    <section class="section-middle section-main">
+      <div class="div-section-middle-center-wrapper resize-me" percentage="80">
+        <div class="div-section-middle-logo-wrapper">
+          <img src="../imgs/img-logo.png" class="img-section-middle-logo" />
+        </div>
+        <br>
+        <div class="div-section-middle-company-description-wrapper">
+          <p class="p-section-middle-company-description">
+            Community-sourced microfinance.
+          </p>
+        </div>
+      </div>
+    </section>
+</div>
+</body>
+</html>
