@@ -46,28 +46,30 @@
               <div class="div-user-info outlined div-panel"> 
                 <h2 class="div-user-name">
                   <img src="imgs/img-icon-user.png" class="img-div-section-main-user-icon" />
-                  Hassan Abudu
+                  <span class="span-main-panel-user-name">
+                    Hassan Abudu
+                  </span>
                 </h2>
 
                 <div class="div-user-credit-score-wrapper">
-                  <span class="span-credit-score-label">Credit Score</span>
-                  <span class="span-credit-score-field">430</span>
+                  <span class="span-credit-score-label span-label">Credit Score</span>
+                  <span class="span-credit-score-field span-data">430</span>
                 </div>
                 <div class="div-user-email-wrapper">
-                  <span class="span-email-label">E-mail</span>
-                  <span class="span-email-field">meyian@gmail.com</span>
+                  <span class="span-email-label span-label">E-mail</span>
+                  <span class="span-email-field span-data">meyian@gmail.com</span>
                 </div>
                 <div class="div-user-amount-deposited-wrapper">
-                  <span class="span-email-label">Amount Deposited</span>
-                  <span class="span-email-field">500 GHS</span>
+                  <span class="span-deposited-label span-label">Amount Deposited</span>
+                  <span class="span-deposited-field span-data">500 GHS</span>
                 </div>
                 <div class="div-user-credit-line-wrapper">
-                  <span class="span-credit-line-label">Credit Line</span>
-                  <span class="span-credit-line-field">100 GHS</span>
+                  <span class="span-credit-line-label span-label">Credit Line</span>
+                  <span class="span-credit-line-field span-data">100 GHS</span>
                 </div>
-                <div class="div-user-credit-line-wrapper">
-                  <span class="span-credit-line-label">Total Amount Available</span>
-                  <span class="span-credit-line-field">600 GHS</span>
+                <div class="div-user-total-available-wrapper">
+                  <span class="span-total-available-label span-label">Total Amount Available</span>
+                  <span class="span-total-available-field span-data">600 GHS</span>
                 </div>
 
               </div>
@@ -79,20 +81,20 @@
                 <h3>"Hello World" collective</h3>
 
                 <div class="div-group-credit-score-wrapper">
-                  <span class="span-credit-score-label">Credit Score</span>
-                  <span class="span-credit-score-field">430</span>
+                  <span class="span-group-credit-score-label span-label">Credit Score</span>
+                  <span class="span-group-credit-score-field">430</span>
                 </div>
                 <div class="div-group-amount-deposited-wrapper">
-                  <span class="span-email-label">Amount Deposited</span>
-                  <span class="span-email-field">500 GHS</span>
+                  <span class="span-group-deposited-label span-label">Amount Deposited</span>
+                  <span class="span-group-deposited-field">500 GHS</span>
                 </div>
                 <div class="div-group-amount-deposited-wrapper">
-                  <span class="span-email-label">Credit Limit</span>
-                  <span class="span-email-field">500 GHS</span>
+                  <span class="span-group-credit-line-label span-label">Credit Line</span>
+                  <span class="span-group-credit-line-field">500 GHS</span>
                 </div>
                 <div class="div-group-amount-available-wrapper">
-                  <span class="span-email-label">Total Available</span>
-                  <span class="span-email-field">500 GHS</span>
+                  <span class="span-group-total-available-label span-label">Total Available</span>
+                  <span class="span-group-total-available-field">500 GHS</span>
                 </div>
               </div>
 
@@ -105,8 +107,8 @@
                   <h3>Payment Methods</h3>
 
                   <div class="div-payment-method-one">
-                    <span class="span-payment-method-name">ExpressPay Account #1629483</span>
-                    <span class="span-payment-method-balance">200 GHS</span>
+                    <span class="span-payment-method-name span-label">ExpressPay Account #1629483</span>
+                    <span class="span-payment-method-balance span-data">200 GHS</span>
                     <button class="btn-edit-payment">Edit</span>
                     <button class="btn-remove-payment">Remove</span>
                   </div>
@@ -118,11 +120,11 @@
 
                   <div class="div-make-withdrawal-form">
 
-                    <div class="div-total-balance-avialble-wrapper">
+                    <div class="div-total-balance-avialable-wrapper">
                       <h4 class="h4-total-balance-avialable-label">
                         Total Cash Available
                       </h4>
-                      <span class="span-total-balance-avialble-field">
+                      <span class="span-total-balance-avialble-field span-data">
                         600 GHS
                       </span>
                     </div>
@@ -138,9 +140,9 @@
 
 
                     <div class="div-make-transfer-wrapper">
-                      <h4 class="h4-total-balance-avialable-label">
+                      <h3 class="h4-total-balance-available-label">
                         Make a Payment
-                      </h4>
+                      </h3>
                       <div class="div-table-wrapper">
                         <table class="table-make-payment">
                           <th>
@@ -154,7 +156,7 @@
                               Amount to Pay
                             </td>
                             <td>
-                              &nbsp;
+                              Make a Payment
                             </td>
                           </th>
                           <tr>
@@ -187,6 +189,7 @@
           </section>
         </div>
 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/dv_sdk.min.js"></script>
