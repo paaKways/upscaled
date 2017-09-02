@@ -95,7 +95,14 @@ if ( typeof jQuery !== undefined ){
 
   // variables
   var strLocalStorageCode = "HelloWorld";
+  
+  //Devless instance
+  var db = DV({
+    "token" : "82d9d71fcbf4f9c35789d4ddb22ac4c7",
+    "domain": "https://devless-paak.herokuapp.com"
+  });
 
+  
 
   // classes
   class Model{
