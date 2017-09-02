@@ -1,0 +1,142 @@
+/* General 
+*/
+
+
+.div-container{
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.outlined{
+  border: 2px solid #333;
+}
+
+.section-main{
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.span-nav, .span-footer{
+  font-size: 2.3vw;
+}
+
+
+
+
+
+
+
+
+
+/* Homepage
+*/
+/* Header Section 
+*/
+
+.section-header{
+  height: 10vh;
+}
+
+.div-section-header-home-icon-wrapper{
+  /*float: left;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.img-div-section-header-home-icon{
+  width: 3.5vw;
+  margin: 2.5vw 1.5vw 2.5vw 2.5vw;
+}
+
+.img-div-section-header-user-icon{
+  width: 4vw;
+  margin: 1vw 1.5vw;
+}
+
+.div-section-header-user-menu-wrapper{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1.5vw 3.5vw 1.5vw 1.5vw;
+}
+
+.span-section-header-home{
+  position: relative;
+  top: 0.5vw;
+}
+
+
+
+
+
+
+
+
+
+/* Middle Section 
+*/
+
+.section-middle{
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-section-middle-logo{
+  width: 100%;
+  display: block;
+}
+
+.div-section-middle-logo-wrapper{
+  display: block;
+}
+
+.div-section-middle-center-wrapper{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-section-middle-company-description{
+  width: 100%;
+}
+
+.div-section-middle-company-description-wrapper{
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Section 
+*/
+
+
+.section-footer{
+  height: 10vh;
+}
+
+.span-section-footer-copyright{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 2vw;
+  margin-bottom: 2vw;
+
+}
