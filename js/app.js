@@ -543,7 +543,7 @@ if ( typeof jQuery !== undefined ){
   }
 
   function getAllData(){
-    //var strPojoData = localStorage.getItem(strLocalStorageCode) || "{}";
+    var strPojoData = localStorage.getItem(strLocalStorageCode) || "{}";
 
     console.log('getAllData > line 385. | strPojoData: ', strPojoData);
 
